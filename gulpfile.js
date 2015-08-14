@@ -7,12 +7,12 @@ var uglify = require('gulp-uglify');
 var streamify = require('gulp-streamify');
 
 gulp.task('default',['jshint','build'],function() {
-  gulp.watch(['src/**/**.jsx'],['jshint','build']);
+  gulp.watch(['src/**/**.js'],['jshint','build']);
 });
 
 gulp.task('build',function() {
   return browserify({
-    entries: ['./src/ace.jsx'],
+    entries: ['./src/ace.js'],
     debug: true
   })
   .bundle()
@@ -22,7 +22,7 @@ gulp.task('build',function() {
 
 gulp.task('release', function() {
   return browserify({
-    entries: ['./src/ace.jsx']
+    entries: ['./src/ace.js']
   })
   .bundle()
   .pipe(source('react-ace.min.js'))
@@ -32,7 +32,7 @@ gulp.task('release', function() {
 
 gulp.task('example',function() {
   return browserify({
-    entries: ['./example/example.jsx'],
+    entries: ['./example/example.js'],
     debug: true
   })
   .bundle()
